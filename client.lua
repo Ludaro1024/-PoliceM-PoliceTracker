@@ -1,21 +1,25 @@
-AddEventHandler('showblip', function(id, name)
-    local playerCoords = GetEntityCoords(id)
-		
-    local blip = AddBlipForCoord(playerCoords.x, playerCoords.y, playerCoords.z)
-    SetBlipSprite (blip, Config.BlipID)
-    SetBlipScale  (blip, 0.65)
-    SetBlipDisplay(blip, 4)
-    SetBlipColour (blip, Config.BlipColorID)
-    SetBlipAsShortRange(blip, true)
-    BeginTextCommandSetBlipName('STRING') 
-    AddTextComponentString(name)
-    EndTextCommandSetBlipName(blip)
-    local time = Config.Refresh - 100
-    Citizen.Await(time)
-   RemoveBlip(blip)
-  end)
 
-  AddEventHandler('removeblip', function()
+  TriggerEvent('esx:getSharedObject', function(obj) 
+    ESX = obj 
+end)
 
 
-  end)
+RegisterNetEvent('policetracker:showblip')
+AddEventHandler('policetracker:showblip', function(name, can)
+  if can then
+        local name = namee or 'Default Blip'
+        local marker = GetEntityCoords(PlayerPedId())
+        local blip = AddBlipForCoord(marker)
+        SetBlipSprite (blip, Config.BlipID)
+        SetBlipScale  (blip, Config.BlipSize)
+        SetBlipDisplay(blip, 4)
+        SetBlipColour (blip, Config.BlipColorID)
+        SetBlipAsShortRange(blip, true)
+        BeginTextCommandSetBlipName('STRING') 
+        AddTextComponentString(name)
+        EndTextCommandSetBlipName(blip)
+  else
+    print()
+RemoveBlip(blip)
+  end
+end)
