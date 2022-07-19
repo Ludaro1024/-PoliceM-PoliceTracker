@@ -1,7 +1,7 @@
 Config = {}
 
 Config.Policejob = "police"
-Config.Item = "tomatos"
+Config.Item = "water"
 Config.Refresh = 20000
 Config.BlipID = 42
 Config.BlipColorID = 38 
