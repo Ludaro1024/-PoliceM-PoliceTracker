@@ -8,6 +8,7 @@ Citizen.CreateThread(function()
     while true do
         Citizen.Wait(100)
         for k, playerId in pairs(GetPlayers()) do
+                if ESX.GetPlayerFromId(playerId) ~= nil then
     local xPlayer = ESX.GetPlayerFromId(playerId)
     local item = xPlayer.getInventoryItem(Config.Item)
     local job = xPlayer.job.name
@@ -19,6 +20,7 @@ Citizen.CreateThread(function()
         local can = false
         TriggerClientEvent("policetracker:showblip", playerId, name, can)
     end
+                    end
         end
     end
 end)
